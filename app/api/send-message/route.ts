@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server"
 
+// fixes build on cloudflare pages
+export const runtime = 'edge';
+
 const CLOUDFLARE_SECRET_KEY = process.env.CLOUDFLARE_SECRET_KEY
 const NTFY_TOPIC = process.env.NTFY_TOPIC
 const NTFY_HOST = process.env.NTFY_HOST ? process.env.NTFY_HOST : "ntfy.sh"
