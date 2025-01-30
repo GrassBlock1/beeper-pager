@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/components/ui/use-toast"
+import { useToast } from "@/hooks/use-toast"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function Home() {
@@ -33,11 +33,16 @@ export default function Home() {
         })
         setMessage("")
         formRef.current?.reset()
+      } else {
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: data.error,
+        })
       }
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to send the emergency message. Please try again.",
+        title: "Internal Error",
+        description: "A error occured: \n" + error,
         variant: "destructive",
       })
     } finally {
