@@ -26,7 +26,6 @@ export default function Home() {
       })
 
       const data = await response.json()
-
       if (data.success) {
         toast({
           title: "Message Sent",
