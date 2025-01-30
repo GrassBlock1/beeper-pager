@@ -34,8 +34,6 @@ export default function Home() {
         })
         setMessage("")
         formRef.current?.reset()
-      } else {
-        throw new Error(data.error || "Failed to send message")
       }
     } catch (error) {
       toast({
@@ -60,7 +58,9 @@ export default function Home() {
           className="mb-4"
           required
         />
+        {process.env.NODE_ENV === "development" ? null :
         <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_CLOUDFLARE_SITE_KEY}></div>
+        }
         <Button type="submit" className="w-full mt-4" disabled={isLoading}>
           {isLoading ? "Sending..." : "Send Emergency Message"}
         </Button>

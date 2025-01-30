@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         {children}
+        {process.env.NODE_ENV === "development" ? null :
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        }
       </body>
     </html>
   )
