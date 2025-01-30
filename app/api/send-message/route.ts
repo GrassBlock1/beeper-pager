@@ -18,7 +18,6 @@ const limiter = rateLimit({
 
 export async function POST(request: Request, res: NextApiResponse) {
   const formData = await request.formData();
-  console.log(formData);
   const message = formData.get('message') as string;
   const turnstileResponse = formData.get("cf-turnstile-response") as string;
 
